@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SIE - Toledo · Início</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    :root{ --brand:#2f7f47; --border:#e2e5e9; }
+    body{ background:#fff; }
+    .navbar{ background:var(--brand); }
+    .page-wrap{ max-width:1200px; margin-inline:auto; }
+    @media (min-width:992px){ .page-wrap{ max-width:720px; } }
+    .welcome-row{ display:flex; align-items:center; gap:.5rem; margin:.75rem 0 .5rem; }
+    .welcome-avatar{ width:28px; height:28px; border-radius:50%; background:#e9ecef; color:#adb5bd; display:inline-flex; align-items:center; justify-content:center; }
+    .welcome-title{ margin:0; font-weight:600; }
+    .info-alert{ border:1px solid #eef1f4; border-radius:.5rem; }
+    .filter-link{ color:#6c757d; text-decoration:none; font-weight:600; display:inline-flex; gap:.25rem; align-items:center; }
+    .form-check-input:checked{ background-color:#198754; border-color:#198754; }
+    .form-check-input:focus{ border-color:#198754; box-shadow:0 0 0 .25rem rgba(25,135,84,.25); }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-xxl">
+      <a class="navbar-brand" href="#">SIE - Toledo</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topnav"><span class="navbar-toggler-icon"></span></button>
+      <div id="topnav" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="esporte_filtrado.html">Pesquisar esporte</a></li>
+          <li class="nav-item"><a class="nav-link" href="usuario_com_vaga.html">Minhas matrículas</a></li>
+          <li class="nav-item"><a class="nav-link" href="meu_perfil.html">Meu perfil</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container-xxl page-wrap py-2">
+    <div class="welcome-row">
+      <span class="welcome-avatar"><i class="bi bi-person"></i></span>
+      <h6 class="welcome-title">Bem vindo, Nome</h6>
+    </div>
+
+    <div class="alert alert-light info-alert mb-3" role="alert">
+      <div class="d-flex">
+        <i class="bi bi-info-circle me-2 text-muted"></i>
+        <div>Você ainda não se matriculou em um esporte. Escolha o esporte que deseja fazer sua matrícula.</div>
+      </div>
+    </div>
+
+    <form class="input-group mb-2" action="esporte_filtrado.html" method="get">
+      <input type="search" class="form-control" name="q" placeholder="Procure por um esporte" required>
+      <button class="btn btn-success" type="submit" aria-label="Buscar"><i class="bi bi-search"></i></button>
+    </form>
+
+   
+    <div class="mb-3">
+      <button type="button" class="btn btn-link p-0 filter-link" data-bs-toggle="modal" data-bs-target="#filtrosModal">
+        Filtros <i class="bi bi-sliders"></i>
+      </button>
+    </div>
+  </main>
+
+  
+  <div class="modal fade" id="filtrosModal" tabindex="-1" aria-labelledby="filtrosModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4">
+        <div class="modal-header">
+          <h5 class="modal-title" id="filtrosModalLabel">Filtros</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        <form id="formFiltros">
+          <div class="modal-body">
+            <div class="mb-3">
+              <label class="form-label">Esporte</label>
+              <select class="form-select" name="esportes">
+                <option value="Todos" selected>Todos</option>
+                <option value="Futebol">Futebol</option>
+            
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Local do treino</label>
+              <select class="form-select" name="local">
+                <option value="Todos" selected>Todos</option>
+                <option>Estádio 14 de Dezembro</option>
+                <option>C. Esportivo Vaquinha</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Dias da semana</label>
+              <select class="form-select" name="dias">
+                <option value="Todos" selected>Todos</option>
+                <option value="2e4">2ª e 4ª</option>
+                <option value="3e5">3ª e 5ª</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Horários</label>
+              <select class="form-select" name="horarios">
+                <option value="Todos" selected>Todos</option>
+                <option>18:00</option>
+                <option>19:00</option>
+                <option>20:00</option>
+                <option>21:00</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Professor</label>
+              <select class="form-select" name="professores">
+                <option value="Todos" selected>Todos</option>
+                <option>Prof. Ederson</option>
+                <option>Prof. Leandro</option>
+              </select>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="ckCheias" name="status" value="cheias">
+              <label class="form-check-label" for="ckCheias">Mostrar turmas cheias</label>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <div></div>
+            <div class="d-flex gap-2">
+              <button type="submit" class="btn btn-success">Aplicar filtros</button>
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+  
+    document.getElementById('formFiltros').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const esporte   = this.elements['esportes']?.value   || '';
+      const dias      = this.elements['dias']?.value       || '';
+      const horario   = this.elements['horarios']?.value   || '';
+      const local     = this.elements['local']?.value      || '';
+      const professor = this.elements['professores']?.value|| '';
+      const status    = this.elements['status']?.checked ? 'cheias' : '';
+
+      const p = new URLSearchParams();
+      if (esporte   && esporte   !== 'Todos') p.set('esporte', esporte);
+      if (dias      && dias      !== 'Todos') p.set('dias', dias);
+      if (horario   && horario   !== 'Todos') p.set('horario', horario);
+      if (local     && local     !== 'Todos') p.set('local', local);
+      if (professor && professor !== 'Todos') p.set('professor', professor);
+      if (status) p.set('status', status);
+
+      location.href = `esporte_filtrado.html?${p.toString()}`;
+    });
+  </script>
+</body>
+</html>
